@@ -34,6 +34,14 @@ namespace SA_Carlos
                         Console.Write("Por favor, insira o CPF do cliente: ");
                         cliente.CPF = Console.ReadLine();
                         Console.Clear();
+                        var c = listClientes.Find(item => item.CPF == cliente.CPF);
+                        if (c != null)
+                        {
+
+                            Console.WriteLine("O CPF já está cadastrado.");
+                            Console.ReadKey();
+                            continue;
+                        }
                         Console.Write("Por favor, insira o Telefone do cliente: ");
                         cliente.telefone = Console.ReadLine();
                         Console.Clear();
@@ -101,6 +109,13 @@ namespace SA_Carlos
                                 Console.Write("Deseja alterar mais alguma coisa? '1 = Sim, 2 = Não': ");
                                 decisao = Convert.ToInt32(Console.ReadLine());
                                 continue;
+                            }
+
+                            if(cod > 3 || cod < 1)
+                            {
+                                Console.WriteLine("Código inválido.");
+                                Console.ReadKey();
+                                Console.Clear();
                             }
                         }
                         continue;
@@ -184,7 +199,7 @@ namespace SA_Carlos
                         {
                             var cli = listClientes.Find(i => i.CPF == item.CPFReservista);
                             Console.Write($"| Nome do reservista: {cli.nome} ");
-                            Console.Write($"| CPF Reservista: {item.CPFReservista} | Data e hora da Reserva: {item.dataReserva.ToString("dd-MM-yyyy HH:mm-ss")} | Número de pessoas: {item.nPessoas}|\n| Mesa(s) reservada(s): ");
+                            Console.Write($"| CPF Reservista: {item.CPFReservista} | Data e hora da Reserva: {item.dataReserva.ToString("dd/MM/yyyy HH:mm-ss")} | Número de pessoas: {item.nPessoas}|\n| Mesa(s) reservada(s): ");
                             foreach(var i in item.mesa)
                             {
                                 Console.Write($"{i} ");
