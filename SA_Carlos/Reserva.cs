@@ -8,10 +8,9 @@ namespace SA_Carlos
     {
         public int idReserva { get; set; }
         public DateTime dataReserva { get; set; }
-        public int mesa { get; set; }
+
+        public List<int> mesa = new List<int>();
         public int nPessoas { get; set; }
-
-        
-
+        public String CPFReservista { get; set; }
     }
 }
